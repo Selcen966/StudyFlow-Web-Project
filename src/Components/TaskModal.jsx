@@ -1,0 +1,10 @@
+import React, {useEffect, useState} from 'react';
+import { X } from 'lucide-react';
+const empty = {title:'',course:'',date:'',priority:'Orta'};
+export default function TaskModal({task,onClose,onSave}) {
+ const [form,setForm] = useState(task ? {title:task.title,course:task.course,date:task.date,priority:task.priority} : empty);
+ const [error,setError] = useState('');
+ useEffect(()=>{function key(e){if(e.key==='Escape')onClose()}window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key)},[onClose]);
+ function submit(e){e.preventDefault();if(!form.title.trim()){setError('Lütfen bir görev başlığı girin.');return;}onSave({...form,title:form.title.trim(),course:form.course.trim()||'Genel'});}
+ return <div className="modal-overlay" onMouseDown={e=>{if(e.target===e.currentTarget)onClose()}}><section className="modal" role="dialog" aria-modal="true" aria-label={task?'Görevi düzenle':'Yeni görev'}><div className="modal-top"><div><h2>{task?'Görevi düzenle':'Yeni görev oluştur'}</h2><p>Planına yeni bir adım ekle.</p></div><button className="icon-button" onClick={onClose} aria-label="Kapat"><X size={19}/></button></div><form onSubmit={submit}><label>Görev başlığı <span>*</span><input autoFocus maxLength={90} placeholder="Örn. Veri tabanı ödevini bitir" value={form.title} onChange={e=>setForm({...form,title:e.target.value})}/></label><label>Ders / Kategori<input maxLength={40} placeholder="Örn. Database Systems" value={form.course} onChange={e=>setForm({...form,course:e.target.value})}/></label><div className="form-grid"><label>Son tarih<input type="date" value={form.date} onChange={e=>setForm({...form,date:e.target.value})}/></label><label>Öncelik<select value={form.priority} onChange={e=>setForm({...form,priority:e.target.value})}><option>Düşük</option><option>Orta</option><option>Yüksek</option></select></label></div>{error&&<p className="error" role="alert">{error}</p>}<div className="modal-actions"><button type="button" className="secondary-button" onClick={onClose}>Vazgeç</button><button className="primary-button" type="submit">{task?'Değişiklikleri kaydet':'Görev ekle'}</button></div></form></section></div>
+}

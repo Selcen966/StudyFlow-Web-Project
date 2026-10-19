@@ -1,0 +1,19 @@
+STUDYFLOW — PROJE TESLİM REHBERİ
+
+Proje: React + Vite + Pure CSS ile Öğrenci Görev Planlayıcı
+İşlevler: Ekle / Listele / Güncelle / Sil / Ara / Filtrele / Tamamla
+Veri depolama: LocalStorage
+
+Gerekenler:
+1. Node.js kurulu bilgisayarda terminali proje klasöründe aç.
+2. npm install
+3. npm run dev
+4. Ekranda verilen localhost adresini aç.
+5. GitHub'da herkese açık (public) repo oluşturup README'deki komutlarla yükle.
+6. Netlify'da GitHub deposunu bağla; build komutu npm run build, yayın klasörü dist.
+7. Teslim formuna GitHub ve Netlify bağlantılarını ekle.
+
+Ekran görüntüsü: screenshots/studyflow-ekran-goruntusu.png
+NOT: Görsel, uygulamanın kodu ve örnek verileri esas alınarak hazırlanmış tasarım önizlemesidir.
+NOT: GitHub ve Netlify hesaplarına yükleme yapılmamıştır; gerçek bağlantılar henüz mevcut değildir.
+NOT: Bu ortamda npm paket kurulumu zaman aşımına uğradığı için canlı derleme doğrulanamadı.
